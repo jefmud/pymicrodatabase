@@ -84,6 +84,7 @@ class MicroDB:
         """findkey(key) - find matching key"""
         if key in self.datastore:
             return self.datastore[key]
+        return {}
         
     def find(self, data=None):
         """find(data) - find matching keys/values"""
