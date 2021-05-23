@@ -182,6 +182,24 @@ class MicroDB:
         if key in self.datastore:
             return self.datastore[key]
         
+    def findkeys(self, keys):
+        """
+        findkeys(keys) - findmatching keys and return data
+        
+        inputs
+            keys - a list of keys in the dictionary
+            
+        returns
+            list of matching items
+        """
+        data = []
+        for key in keys:
+            item = self.findkey(key)
+            if item:
+                data.append(item)
+        return data
+            
+        
     def find(self, data=None):
         """
         find(data) - find matching keys/values
@@ -217,7 +235,7 @@ class MicroDB:
             if isinstance(value, str):
                 x = re.search(pattern, value)
                 if x:
-                    found.append(k)            
+                    found.append(key)            
         return found
     
     def update(self, key, data, save=True):
